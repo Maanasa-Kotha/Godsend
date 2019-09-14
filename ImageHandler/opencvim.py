@@ -20,17 +20,13 @@ if args["preprocess"] == "thresh":
 	gray = cv2.threshold(gray, 0, 255,
 	cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
 
-
-print("here")
 filename = "{}.png".format(os.getpid())
 cv2.imwrite(filename, gray)
-
 
 text = pytesseract.image_to_string(Image.open(filename))
 os.remove(filename)
 print(text)
-print("here2")
- 
+
 # show the output images
 cv2.imshow("Image", image)
 cv2.imshow("Output", gray)
