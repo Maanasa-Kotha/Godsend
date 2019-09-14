@@ -13,4 +13,5 @@ def ocr_core(filename):
     return text
 
 print(ocr_core("images/poster.png"))
+print("Hello Maanasa")
 
