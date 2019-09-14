@@ -4,6 +4,7 @@ except ImportError:
     import Image
 import pytesseract
 
+#ONLY WORKS WITH PNGs
 def ocr_core(filename):
     """
     This function will handle the core OCR processing of images.
@@ -11,5 +12,5 @@ def ocr_core(filename):
     text = pytesseract.image_to_string(Image.open(filename))  # We'll use Pillow's Image class to open the image and pytesseract to detect the string in the image
     return text
 
-print(ocr_core("equation.jpg"))
+print(ocr_core("images/poster.png"))
 
