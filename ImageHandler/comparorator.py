@@ -1,6 +1,6 @@
 from opencvim import image_to_text, dic_pic
 
-def text_to_str(text):
+def str_to_lis(text):
 	lis = []
 	i = 0
 	last = 0
@@ -20,7 +20,7 @@ def compare(freq_dic, second_pic):
 	i = 0
 	last = 0
 	diff = 0
-	second_pic_lis = text_to_str(second_pic)
+	second_pic_lis = str_to_lis(second_pic)
 	# print(second_pic_lis)
 	for word in second_pic_lis:
 		if word in freq_dic:
@@ -41,4 +41,4 @@ def compare(freq_dic, second_pic):
 # text2 = "Hello this is horrible. I love heaven."
 # dic1 = dic_pic(text)
 # print(compare(dic1, text2))
-# print(text_to_str(text))
+# print(str_to_lis(text))
