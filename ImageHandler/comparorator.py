@@ -17,7 +17,6 @@ def str_to_lis(text):
 
 #frequencyb dictionary and second_pic should be a list of words
 def compare(freq_dic, second_pic):
-	i = 0
 	last = 0
 	diff = 0
 	second_pic_lis = str_to_lis(second_pic)
@@ -30,7 +29,6 @@ def compare(freq_dic, second_pic):
 				diff += 1
 		else:
 			diff += 1
-		i+=1
 	if diff/len(second_pic_lis)>0.5:
 		print(diff)
 		return True

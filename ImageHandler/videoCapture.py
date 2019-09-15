@@ -1,7 +1,9 @@
 import cv2
 import pytesseract
+from comparorator import compare
+from opencvim import image_to_text, dic_pic
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(4)
 
 # Default resolutions of the frame are obtained.The default resolutions are system dependent.
 # We convert the resolutions from float to integer.
@@ -24,11 +26,15 @@ while(True):
         gray = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
         tempText = pytesseract.image_to_string(gray)
 
-        different = compare(refDic, tempText):
-        if refText == None or different: #If there is a reference image and there is a difference
-            print("Next Page")
-            refDic = dicPic(tempText)  
-
+        if refDic == None:
+            refDic = dic_pic(tempText)  
+        else:
+            different = compare(refDic, tempText)
+            if different: #If there is a reference image and there is a difference
+                print("Next Page")
+                refDic = dic_pic(tempText)  
+            else:
+                print("stable")
         # Display the resulting frame
         cv2.imshow('frame',gray)
 
