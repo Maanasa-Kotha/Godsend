@@ -10,18 +10,20 @@ cap = cv2.VideoCapture(4)
 frame_width = int(cap.get(3))
 frame_height = int(cap.get(4))
 
+cap.set(28, 125)
+
 count = 0
 frameNum = 0
-refDic = None
-tempText = None
 print('start recording')
 
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
-    if count % 2 == 0:
+    if count % 10 == 0:
+        cv2.imwrite("../images/videoFrames/frame" + str(frameNum%5) + ".png", frame)     # save frame as JPEG file
+        frameNum += 1
 
-        # Check if current img is different than reference image and set new reference image if it is
+        # Our operations on the frame come here
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         gray = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
         tempText = pytesseract.image_to_string(gray)

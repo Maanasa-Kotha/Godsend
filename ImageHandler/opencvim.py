@@ -51,5 +51,3 @@ def dic_pic(text):
 		i+=1
 	print(words)
 	return words
-
-image_to_text("../images/poster.png", "thresh")
