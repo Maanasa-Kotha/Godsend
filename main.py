@@ -24,6 +24,8 @@ if cap != None:
     frameNum = 0
     print('start recording')
 
+    t1 = None
+
     while(True):
         # Capture frame-by-frame
         ret, frame = cap.read()
@@ -67,11 +69,12 @@ if cap != None:
             # Display the resulting frame
             #cv2.imshow('frame', frame)
             cv2.imshow('frame2', gray)
-        
-
 
             try:
-              text_to_speech(tempText)
+              if ((t1 is None) or (not t1.isAlive())):
+                t1 = threading.Thread(target=text_to_speech, args=(tempText,))
+                t1.daemon = True
+                t1.start()
             except AssertionError:
               text_to_speech("Text complete")
 
