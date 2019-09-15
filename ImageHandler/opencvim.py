@@ -24,17 +24,10 @@ def image_to_text(image_text, preprocess):
 	filename = "{}.png".format(os.getpid())
 	cv2.imwrite(filename, gray)
 
-	text = pytesseract.image_to_string(Image.open(filename))
-	words = {}
-	for word in text:
-		if word not in words:
-			words[word] = 1
-		else:
-			words[word] += 1
+	text = pytesseract.image_to_string(gray)
 
-	print(words)
 	os.remove(filename)
-	print(text)
+	# print(text)
 
 	# show the output images
 	cv2.imshow("Image", image)
@@ -42,3 +35,21 @@ def image_to_text(image_text, preprocess):
 	
 	return text
 
+def dic_pic(text):
+	words = {}
+	i = 0
+	last = 0
+	word = ''
+	while i<len(text):
+		if text[i] == ' ' or text[i] == '\n':
+			word = text[last:i]
+			last = i+1
+			if word not in words:
+				words[word] = 1
+			else:
+				words[word] += 1
+		i+=1
+	print(words)
+	return words
+
+image_to_text("../images/poster.png", "thresh")
