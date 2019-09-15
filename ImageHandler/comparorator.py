@@ -37,8 +37,8 @@ def compare(freq_dic, second_pic):
 	else:
 		return False
 
-text = "Hello this is fun. I live in hell."
-text2 = "Hello this is horrible. I love heaven."
-dic1 = dic_pic(text)
-print(compare(dic1, text2))
+# text = "Hello this is fun. I live in hell."
+# text2 = "Hello this is horrible. I love heaven."
+# dic1 = dic_pic(text)
+# print(compare(dic1, text2))
 # print(text_to_str(text))
