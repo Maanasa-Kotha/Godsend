@@ -14,8 +14,8 @@ print('start recording')
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
-    if count % 5 == 0:
-        cv2.imwrite("../images/videoFrames/frame%d.png" % frameNum, frame)     # save frame as JPEG file
+    if count % 4 == 0:
+        cv2.imwrite("../images/videoFrames/frame" + str(frameNum%20) + ".png", frame)     # save frame as JPEG file
         frameNum += 1
     # Our operations on the frame come here
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)

@@ -25,6 +25,14 @@ def image_to_text(image_text, preprocess):
 	cv2.imwrite(filename, gray)
 
 	text = pytesseract.image_to_string(Image.open(filename))
+	words = {}
+	for word in text:
+		if word not in words:
+			words[word] = 1
+		else:
+			words[word] += 1
+
+	print(words)
 	os.remove(filename)
 	print(text)
 
