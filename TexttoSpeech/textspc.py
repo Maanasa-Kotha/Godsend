@@ -18,3 +18,5 @@ def text_to_speech(mytext):
     # Playing the converted file
 
     os.system("mpg321 hell.mp3")
+
+    return True
